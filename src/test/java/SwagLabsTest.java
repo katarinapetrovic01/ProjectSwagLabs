@@ -52,13 +52,6 @@ public class SwagLabsTest extends BaseTest{
         Assert.assertEquals(loginPage.getError(),"Epic sadface: Username and password do not match any user in this service");
     }
 
-    @Test
-
-
-
-
-
-
 
     @AfterMethod
     public void after()
