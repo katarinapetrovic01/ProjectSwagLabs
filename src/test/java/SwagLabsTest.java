@@ -131,7 +131,7 @@ public class SwagLabsTest extends BaseTest{
         inventoryPage.addTshirt();
         inventoryPage.clickOnCart();
         cartPage.clickCheckout();
-        checkoutStepOnePage.inputPersonalInfo("Katarina","Petrovic","1100");
+        checkoutStepOnePage.inputPersonalInfo("Katarina","Petrovic","11000");
         checkoutStepOnePage.clickFinish();
 
         Assert.assertEquals(checkoutStepOnePage.getInfoMessage(),"Thank you for your order!");
