@@ -6,6 +6,10 @@ import org.testng.annotations.Test;
 public class SwagLabsTest extends BaseTest{
 
     LoginPage loginPage;
+    InventoryPage inventoryPage;
+    CartPage cartPage;
+
+    CheckoutStepOnePage checkoutStepOnePage;
 
 
 
@@ -14,6 +18,9 @@ public class SwagLabsTest extends BaseTest{
     {
         driver = openBrowser();
         loginPage = new LoginPage(driver);
+        inventoryPage = new InventoryPage(driver);
+        cartPage = new CartPage(driver);
+        checkoutStepOnePage = new CheckoutStepOnePage(driver);
 
     }
 
@@ -53,10 +60,89 @@ public class SwagLabsTest extends BaseTest{
     }
 
 
+    @Test     //2(a)
+
+    public void addThreeProduct(){
+        loginPage.LoginOnPage("standard_user","secret_sauce");
+        inventoryPage.sortProducts("Price (low to high)");
+        Assert.assertEquals(inventoryPage.getPrice(),"$7.99");
+        inventoryPage.addOnesie();
+        inventoryPage.addTshirt();
+        inventoryPage.addLight();
+        inventoryPage.clickOnCart();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/cart.html");
+        Assert.assertEquals(cartPage.getCartNumber(),"3");
+
+    }
+
+    @Test      //2(b)
+
+        public void addTwoProduct(){
+        loginPage.LoginOnPage("standard_user","secret_sauce");
+        inventoryPage.addTshirt();
+        inventoryPage.addLight();
+        inventoryPage.clickOnCart();
+        cartPage.removeTshirt();
+        cartPage.removeLight();
+        //cartPage.clickBurger();
+        //cartPage.clickAllItems();
+        cartPage.clickContinueShopp();
+
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/inventory.html");
+        Assert.assertEquals(inventoryPage.getCartNumber(),"");
+    }
+
+    @Test  //Item Total
+        public void itemTotal(){
+        loginPage.LoginOnPage("standard_user","secret_sauce");
+        inventoryPage.addLight();
+        inventoryPage.clickOnCart();
+        Assert.assertEquals(cartPage.getInfoPrice(),"$9.99");
+        Assert.assertEquals(cartPage.getProductName(),"Sauce Labs Bike Light");
+
+        cartPage.clickCheckout();
+        checkoutStepOnePage.inputPersonalInfo("Katarina","Petrovic","11000");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/checkout-step-two.html");
+        Assert.assertEquals(checkoutStepOnePage.getItemTotal(),"Item total: $9.99");
+
+    }
+
+    @Test  //Total price
+    public void Total(){
+        loginPage.LoginOnPage("standard_user","secret_sauce");
+        inventoryPage.addLight();
+        inventoryPage.clickOnCart();
+        Assert.assertEquals(cartPage.getInfoPrice(),"$9.99");
+        Assert.assertEquals(cartPage.getProductName(),"Sauce Labs Bike Light");
+
+        cartPage.clickCheckout();
+        checkoutStepOnePage.inputPersonalInfo("Katarina","Petrovic","11000");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/checkout-step-two.html");
+        Assert.assertEquals(checkoutStepOnePage.getTotal(),"Total: $10.79");
+
+    }
+
+    @Test
+
+    public void BuyProductsToTheEnd()
+    {
+        loginPage.LoginOnPage("standard_user","secret_sauce");
+        inventoryPage.addLight();
+        inventoryPage.addTshirt();
+        inventoryPage.clickOnCart();
+        cartPage.clickCheckout();
+        checkoutStepOnePage.inputPersonalInfo("Katarina","Petrovic","1100");
+        checkoutStepOnePage.clickFinish();
+
+        Assert.assertEquals(checkoutStepOnePage.getInfoMessage(),"Thank you for your order!");
+
+    }
+
+
     @AfterMethod
     public void after()
     {
         driver.quit();
     }
-
 }
+
