@@ -16,7 +16,6 @@ public class CartTest extends BaseTest{
         loginPage = new LoginPage(driver);
         inventoryPage = new InventoryPage(driver);
         cartPage = new CartPage(driver);
-
     }
 
     @Test     //2(a)
