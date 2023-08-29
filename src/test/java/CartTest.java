@@ -8,8 +8,6 @@ public class CartTest extends BaseTest{
     LoginPage loginPage;
     InventoryPage inventoryPage;
     CartPage cartPage;
-    CheckoutStepOnePage checkoutStepOnePage;
-
 
     @BeforeMethod
     public void SetUp()
