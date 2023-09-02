@@ -10,9 +10,7 @@ public class LoginTest extends BaseTest{
     public void SetUp()
     {
         driver = openBrowser();
-        loginPage = new LoginPage(driver);
-    }
-
+        loginPage = new LoginPage(driver);}
         @Test
         public void loginWithValidData()
         {
@@ -45,8 +43,7 @@ public class LoginTest extends BaseTest{
         public void loginInvalidPassword()
         {
             loginPage.LoginOnPage("standard_user","secret");
-            Assert.assertEquals(loginPage.getError(),"Epic sadface: Username and password do not match any user in this service");
-        }
+            Assert.assertEquals(loginPage.getError(),"Epic sadface: Username and password do not match any user in this service");}
         @AfterMethod
         public void after()
         {
