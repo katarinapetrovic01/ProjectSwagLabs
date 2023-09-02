@@ -15,11 +15,8 @@ public class CartTest extends BaseTest{
         driver = openBrowser();
         loginPage = new LoginPage(driver);
         inventoryPage = new InventoryPage(driver);
-        cartPage = new CartPage(driver);
-    }
-
-    @Test     //2(a)
-
+        cartPage = new CartPage(driver);}
+    @Test
     public void addThreeProduct(){
         loginPage.LoginOnPage("standard_user","secret_sauce");
         inventoryPage.sortProducts("Price (low to high)");
@@ -33,8 +30,7 @@ public class CartTest extends BaseTest{
 
     }
 
-    @Test      //2(b)
-
+    @Test
         public void addTwoProduct(){
         loginPage.LoginOnPage("standard_user","secret_sauce");
         inventoryPage.addTshirt();
@@ -47,8 +43,7 @@ public class CartTest extends BaseTest{
         cartPage.clickContinueShopp();
 
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/inventory.html");
-        Assert.assertEquals(inventoryPage.getCartNumber(),"");
-    }
+        Assert.assertEquals(inventoryPage.getCartNumber(),"");}
     @AfterMethod
     public void after()
     {

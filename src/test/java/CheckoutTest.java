@@ -18,9 +18,7 @@ public class CheckoutTest extends BaseTest{
         loginPage = new LoginPage(driver);
         inventoryPage = new InventoryPage(driver);
         cartPage = new CartPage(driver);
-        checkoutStepOnePage = new CheckoutStepOnePage(driver);
-
-    }
+        checkoutStepOnePage = new CheckoutStepOnePage(driver);}
     @Test  //Item Total
     public void itemTotal(){
         loginPage.LoginOnPage("standard_user","secret_sauce");
@@ -52,7 +50,6 @@ public class CheckoutTest extends BaseTest{
     }
 
     @Test
-
     public void BuyProductsToTheEnd()
     {
         loginPage.LoginOnPage("standard_user","secret_sauce");
@@ -63,9 +60,7 @@ public class CheckoutTest extends BaseTest{
         checkoutStepOnePage.inputPersonalInfo("Katarina","Petrovic","11000");
         checkoutStepOnePage.clickFinish();
 
-        Assert.assertEquals(checkoutStepOnePage.getInfoMessage(),"Thank you for your order!");
-    }
-
+        Assert.assertEquals(checkoutStepOnePage.getInfoMessage(),"Thank you for your order!");}
     @AfterMethod
     public void after()
     {
