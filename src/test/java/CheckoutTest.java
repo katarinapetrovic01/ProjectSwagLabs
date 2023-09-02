@@ -46,7 +46,7 @@ public class CheckoutTest extends BaseTest{
         Assert.assertEquals(checkoutStepOnePage.getTotal(),"Total: $10.79");}
 
     @Test
-    public void BuyProductsToTheEnd() {
+    public void BuyProductsToTheEnd(){
         loginPage.LoginOnPage("standard_user","secret_sauce");
         inventoryPage.addLight();
         inventoryPage.addTshirt();
