@@ -26,9 +26,7 @@ public class CartTest extends BaseTest{
         inventoryPage.addLight();
         inventoryPage.clickOnCart();
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/cart.html");
-        Assert.assertEquals(cartPage.getCartNumber(),"3");
-
-    }
+        Assert.assertEquals(cartPage.getCartNumber(),"3");}
 
     @Test
         public void addTwoProduct(){

@@ -30,9 +30,7 @@ public class CheckoutTest extends BaseTest{
         cartPage.clickCheckout();
         checkoutStepOnePage.inputPersonalInfo("Katarina","Petrovic","11000");
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/checkout-step-two.html");
-        Assert.assertEquals(checkoutStepOnePage.getItemTotal(),"Item total: $9.99");
-
-    }
+        Assert.assertEquals(checkoutStepOnePage.getItemTotal(),"Item total: $9.99");}
 
     @Test  //Total price
     public void Total(){
@@ -45,13 +43,10 @@ public class CheckoutTest extends BaseTest{
         cartPage.clickCheckout();
         checkoutStepOnePage.inputPersonalInfo("Katarina","Petrovic","11000");
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/checkout-step-two.html");
-        Assert.assertEquals(checkoutStepOnePage.getTotal(),"Total: $10.79");
-
-    }
+        Assert.assertEquals(checkoutStepOnePage.getTotal(),"Total: $10.79");}
 
     @Test
-    public void BuyProductsToTheEnd()
-    {
+    public void BuyProductsToTheEnd() {
         loginPage.LoginOnPage("standard_user","secret_sauce");
         inventoryPage.addLight();
         inventoryPage.addTshirt();
