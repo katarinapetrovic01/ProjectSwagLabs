@@ -45,7 +45,8 @@ public class CartTest extends BaseTest{
     @AfterMethod
     public void after()
     {
-        driver.quit();}
+        driver.quit();
+    }
 }
 
 

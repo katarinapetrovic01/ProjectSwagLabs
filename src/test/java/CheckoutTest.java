@@ -61,4 +61,4 @@ public class CheckoutTest extends BaseTest{
     {
         driver.quit();
     }
-}
+ }

@@ -43,6 +43,7 @@ public class LoginTest extends BaseTest{
         @AfterMethod
         public void after()
         {
-            driver.quit();}
+            driver.quit();
+        }
 
     }
